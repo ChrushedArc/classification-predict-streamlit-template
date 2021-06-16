@@ -29,7 +29,7 @@ import joblib,os
 import pandas as pd
 
 # Vectorizer
-news_vectorizer = open("resources/tfidfvect.pkl","rb")
+news_vectorizer = open("resources/tfidf_vector_test_1.pkl","rb")
 tweet_cv = joblib.load(news_vectorizer) # loading your vectorizer from the pkl file
 
 # Load your raw data
@@ -42,7 +42,7 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Tweet Classifer")
-	st.subheader("Climate change tweet classification")
+	st.subheader("Climate change tweet classification using supervised learning methods")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
@@ -53,7 +53,7 @@ def main():
 	if selection == "Information":
 		st.info("General Information")
 		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
+		st.markdown("This application is designed to predict the sentiment of tweets from twitter data.  The sentiments are 1,0,-1 and 2, where 1 siginifies belief in climate change, 0 signifies doubt, -1 activly disbelieves in climate change and 2 is a news article")
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
@@ -62,21 +62,57 @@ def main():
 	# Building out the predication page
 	if selection == "Prediction":
 		st.info("Prediction with ML Models")
-		# Creating a text box for user input
-		tweet_text = st.text_area("Enter Text","Type Here")
+		option = st.selectbox('Which model would you like to use?',('SVC', 'Logistic Regression'))
+		st.write('You selected:', option)
+		if option == 'SVC':
+			# Creating a text box for user input
+			tweet_text = st.text_area("Enter Text","Type Here")
 
-		if st.button("Classify"):
-			# Transforming user input with vectorizer
-			vect_text = tweet_cv.transform([tweet_text]).toarray()
-			# Load your .pkl file with the model of your choice + make predictions
-			# Try loading in multiple models to give the user a choice
-			predictor = joblib.load(open(os.path.join("resources/Logistic_regression.pkl"),"rb"))
-			prediction = predictor.predict(vect_text)
+			if st.button("Classify"):
+				# Transforming user input with vectorizer
+				vect_text = tweet_cv.transform([tweet_text]).toarray()
+				# Load your .pkl file with the model of your choice + make predictions
+				# Try loading in multiple models to give the user a choice
+				predictor = joblib.load(open(os.path.join("resources/clf_model_1.pkl"),"rb"))
+				prediction = predictor.predict(vect_text)
 
-			# When model has successfully run, will print prediction
-			# You can use a dictionary or similar structure to make this output
-			# more human interpretable.
-			st.success("Text Categorized as: {}".format(prediction))
+				# When model has successfully run, will print prediction
+				# You can use a dictionary or similar structure to make this output
+				# more human interpretable.
+				if prediction == 1:
+					st.success('This tweet signifies belief in climate change')
+				elif prediction == -1:
+					st.success('This tweet signifies disbelief in climate change')
+				elif prediction == 0:
+					st.success('This tweet neither signifies belief nor disbelief in climate change')
+				elif prediction == 2:
+					st.success('This tweet is a news article about climate change')
+		if option == 'Logistic Regression':
+			# Creating a text box for user input
+			tweet_text = st.text_area("Enter Text","Type Here")
+
+			if st.button("Classify"):
+				# Transforming user input with vectorizer
+				vect_text = tweet_cv.transform([tweet_text]).toarray()
+				# Load your .pkl file with the model of your choice + make predictions
+				# Try loading in multiple models to give the user a choice
+				predictor = joblib.load(open(os.path.join("resources/lrmodel.pkl"),"rb"))
+				prediction = predictor.predict(vect_text)
+
+				# When model has successfully run, will print prediction
+				# You can use a dictionary or similar structure to make this output
+				# more human interpretable.
+				if prediction == 1:
+						st.success('This tweet signifies belief in climate change')
+				elif prediction == -1:
+						st.success('This tweet signifies disbelief in climate change')
+				elif prediction == 0:
+						st.success('This tweet neither signifies belief nor disbelief in climate change')
+				elif prediction == 2:
+					st.success('This tweet is a news article about climate change')
+
+
+			
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
