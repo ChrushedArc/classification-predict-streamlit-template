@@ -61,12 +61,7 @@ def main():
 			st.markdown('Below is the raw data')
 			st.write(raw[['sentiment', 'message']]) # will write the df to the page
 			st.markdown('Below is the distribution plot of the sentiment score between the classes')
-			fig, ax = plt.subplots()
-			ax.hist(raw[['sentiment']])
-			plt.title('Count of Sentiment Score')
-			plt.xlabel('Categories')
-			plt.ylabel('Count per Catagory')
-			st.pyplot(fig)
+			st.image("resources/newplot.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 
 	# Building out the predication page
 	if selection == "Prediction":
