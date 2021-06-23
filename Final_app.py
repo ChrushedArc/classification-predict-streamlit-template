@@ -27,6 +27,7 @@ import joblib,os
 
 # Data dependencies
 import pandas as pd
+import numpy as np
 
 # Vectorizer
 news_vectorizer = open("resources/count_vect.pkl","rb")
@@ -66,31 +67,31 @@ def main():
 		st.subheader("Visual Selection ")
 		if st.checkbox('Show Distribution of Target Variable'):
 			st.markdown('Below is the distribution plot of the sentiment score between the classes') 
-			st.image("resources/newplot.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/newplot.png", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Positve Hashtags'):
 			st.markdown('Below is the distribution plot of hasthags of that tweets show that believe in climate change') 
-			st.image("resources/Hashtag Believe.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Hashtag_believe.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Negative Hashtags'):
 			st.markdown('Below is the distribution plot of hasthags of that tweets show that believe in climate change') 
-			st.image("resources/Hashtag Disb.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Hashtag%20dis.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Neutral Hashtags'):
 			st.markdown('Below is the distribution plot of hasthags of that tweets show that believe in climate change') 
-			st.image("resources/Neutralht.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Neutralht.png", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show News Related Hashtags'):
 			st.markdown('Below is the distribution plot of hasthags of that tweets show that believe in climate change') 
-			st.image("resources/Newst.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Newst.png", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Positve Twitter Handles'):
 			st.markdown('Below is the distribution plot of Twitter Handles of that tweets show that believe in climate change') 
-			st.image("resources/Handle Believe.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Handle%20Believe.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Negative Twitter Handles'):
 			st.markdown('Below is the distribution plot of Twitter Handles of that tweets show that do not believe in climate change') 
-			st.image("resources/Handle Disb.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Handle%20Disb.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show Neutral Twitter Handles'):
 			st.markdown('Below is the distribution plot of Twitter Handles of that tweets show that neither believe nor disbelieve in climate change') 
-			st.image("resources/Neutralhd.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Neutralhd.png", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 		if st.checkbox('Show News Article Twitter Handles'):
 			st.markdown('Below is the distribution plot of Twitter Handles of that tweets that are news articles regarding climate change') 
-			st.image("resources/Newshd.PNG", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
+			st.image("https://raw.githubusercontent.com/ChrushedArc/classification-predict-streamlit-template/master/resources/Newshd.png", caption=None, width=None, use_column_width=None, clamp=False, channels='RGB', output_format='auto')
 
 
 	
